@@ -1,0 +1,21 @@
+# file managed by puppet
+<VirtualHost *:80>
+
+	ServerAdmin webmaster@localhost
+  ServerName <%= scope.lookupvar('symfony::vhost_name')%>
+	DocumentRoot <%= scope.lookupvar('symfony::target_project_dir')%>/web
+	DirectoryIndex app_dev.php
+
+	<Directory />
+		Options FollowSymLinks
+		AllowOverride All
+		Allow from All
+	</Directory>
+
+	<Directory <%= scope.lookupvar('symfony::target_project_dir')%>/web>
+		Options Indexes FollowSymLinks MultiViews
+		AllowOverride All
+        Allow from All
+	</Directory>
+
+</VirtualHost>
